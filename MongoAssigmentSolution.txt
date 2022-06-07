@@ -1,0 +1,50 @@
+//Answer Number 1----------------------------->//
+
+db.restaurant.aggregate({$project: {_id: 0, 'address.zipcode': 1, name: 1, restaurant_id: 1}})
+
+
+
+
+//Answer Number 2 ---------------------------->//
+
+db.restaurant.aggregate({$sort: {name: 1}})
+
+
+
+
+//Answer Number 3 ---------------------------->//
+
+db.restaurant.aggregate([{$limit: 5}, {$sort: {'name': 1}}])
+
+
+
+
+//Answer Number 4 ---------------------------->//
+
+db.restaurant.aggregate([{$skip: 5}, {$limit: 5}])
+
+
+
+//Answer Number 5 ---------------------------->//
+
+db.restaurant.find({'grades.score': {$gt: 90}})
+
+
+
+
+//Answer Number 5 -------------------------->//
+
+db.restaurant.find({'grades.score': {$gt: 80, $lt: 100}})
+
+
+
+//Answer Number 7 --------------------------->//
+
+db.restaurant.find({name: {$regex: /^Caf/}})
+
+
+
+//Answer Number 8--------------------------->//
+
+db.restaurant.update({cuisine: "Bakery" {$set: {'grades.grade': 'A'}}}, {multi: true})
+
